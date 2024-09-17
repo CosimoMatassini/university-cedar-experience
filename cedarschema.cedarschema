@@ -1,0 +1,75 @@
+type User = {
+	age: Long,
+	id?: Long
+};
+
+entity ProfessorTeam;
+
+entity Student {
+	userInformation: User,
+	faculty: String,
+	weightedAverage: decimal
+};
+
+entity Professor in ProfessorTeam {
+	userInformation : User
+};
+
+entity Course {
+	faculty: String,
+	year: Long,
+	professors: Set<Professor>
+};
+
+entity Article {
+	title: String,
+	genre: String
+};
+
+action ReadResource, ResearchDepartmentActions;
+
+action ReadParticipants in ReadResource appliesTo {
+	principal: [Student, Professor],
+	resource: Course,
+	context: {
+		isPrincipalSubscribed: Bool
+	}
+};
+
+action SubscribeToCourse, UnsubscribeFromCourse appliesTo {
+	principal: Student,
+	resource: Course
+};
+
+action RemoveStudent appliesTo {
+	principal: Professor,
+	resource: Student,
+	context: {
+		course: Course
+	}
+};
+
+action DeleteCourse appliesTo {
+	principal: Professor,
+	resource: Course,
+	context: {
+		currentYear: Long,
+		studentsSubscribedToCourse: Long
+	}
+};
+
+action PublishArticle in ResearchDepartmentActions appliesTo {
+	principal: Professor,
+	resource: Article,
+	context: {
+		sourceIp: ipaddr
+	}
+};
+
+action ReadArticle in [ResearchDepartmentActions, ReadResource] appliesTo {
+	principal: [Student, Professor],
+	resource: Article,
+	context: {
+		isPublic?: Bool
+	}
+};

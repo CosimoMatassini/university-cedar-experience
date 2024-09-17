@@ -1,0 +1,11 @@
+{
+	"principal": "Professor::\"professor1\"",
+	"action": "Action::\"RemoveStudent\"",
+	"resource": "Student::\"student1\"",
+	"context": {
+		"course": {
+			"type": "Course",
+			"id": "course1"
+		}
+	}
+}

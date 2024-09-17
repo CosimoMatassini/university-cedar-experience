@@ -1,0 +1,6 @@
+{
+	"principal": "Student::\"student1\"",
+	"action": "Action::\"SubscribeToCourse\"",
+	"resource": "Course::\"course2\"",
+	"context": {}
+}

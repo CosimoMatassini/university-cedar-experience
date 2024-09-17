@@ -1,0 +1,9 @@
+{
+	"principal": "Professor::\"professor2\"",
+	"action": "Action::\"DeleteCourse\"",
+	"resource": "Course::\"course1\"",
+	"context": {
+		"currentYear": 2024,
+		"studentsSubscribedToCourse": 0
+	}
+}

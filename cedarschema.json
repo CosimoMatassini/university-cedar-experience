@@ -1,0 +1,234 @@
+{
+	"": {
+		"commonTypes": {
+			"User": {
+				"type": "Record",
+				"attributes": {
+					"age": {
+						"type": "Long"
+					},
+					"id": {
+						"type": "Long",
+						"required": false
+					}
+				}
+			}
+		},
+		"entityTypes": {
+			"ProfessorTeam": {},
+			"Student": {
+				"shape": {
+					"type": "Record",
+					"attributes": {
+						"faculty": {
+							"type": "String"
+						},
+						"userInformation": {
+							"type": "User"
+						},
+						"weightedAverage": {
+							"type": "Extension",
+							"name": "decimal"
+						}
+					}
+				}
+			},
+			"Professor": {
+				"memberOfTypes": [
+					"ProfessorTeam"
+				],
+				"shape": {
+					"type": "Record",
+					"attributes": {
+						"userInformation": {
+							"type": "User"
+						}
+					}
+				}
+			},
+			"Course": {
+				"shape": {
+					"type": "Record",
+					"attributes": {
+						"faculty": {
+							"type": "String"
+						},
+						"professors": {
+							"type": "Set",
+							"element": {
+								"type": "Entity",
+								"name": "Professor"
+							}
+						},
+						"year": {
+							"type": "Long"
+						}
+					}
+				}
+			},
+			"Article": {
+				"shape": {
+					"type": "Record",
+					"attributes": {
+						"genre": {
+							"type": "String"
+						},
+						"title": {
+							"type": "String"
+						}
+					}
+				}
+			}
+		},
+		"actions": {
+			"ReadParticipants": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Course"
+					],
+					"principalTypes": [
+						"Student",
+						"Professor"
+					],
+					"context": {
+						"type": "Record",
+						"attributes": {
+							"isPrincipalSubscribed": {
+								"type": "Boolean"
+							}
+						}
+					}
+				},
+				"memberOf": [
+					{
+						"id": "ReadResource"
+					}
+				]
+			},
+			"RemoveStudent": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Student"
+					],
+					"principalTypes": [
+						"Professor"
+					],
+					"context": {
+						"type": "Record",
+						"attributes": {
+							"course": {
+								"type": "Entity",
+								"name": "Course"
+							}
+						}
+					}
+				}
+			},
+			"DeleteCourse": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Course"
+					],
+					"principalTypes": [
+						"Professor"
+					],
+					"context": {
+						"type": "Record",
+						"attributes": {
+							"currentYear": {
+								"type": "Long"
+							},
+							"studentsSubscribedToCourse": {
+								"type": "Long"
+							}
+						}
+					}
+				}
+			},
+			"PublishArticle": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Article"
+					],
+					"principalTypes": [
+						"Professor"
+					],
+					"context": {
+						"type": "Record",
+						"attributes": {
+							"sourceIp": {
+								"type": "Extension",
+								"name": "ipaddr"
+							}
+						}
+					}
+				},
+				"memberOf": [
+					{
+						"id": "ResearchDepartmentActions"
+					}
+				]
+			},
+			"ReadResource": {
+				"appliesTo": {
+					"resourceTypes": [],
+					"principalTypes": []
+				}
+			},
+			"ResearchDepartmentActions": {
+				"appliesTo": {
+					"resourceTypes": [],
+					"principalTypes": []
+				}
+			},
+			"SubscribeToCourse": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Course"
+					],
+					"principalTypes": [
+						"Student"
+					]
+				}
+			},
+			"ReadArticle": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Article"
+					],
+					"principalTypes": [
+						"Student",
+						"Professor"
+					],
+					"context": {
+						"type": "Record",
+						"attributes": {
+							"isPublic": {
+								"type": "Boolean",
+								"required": false
+							}
+						}
+					}
+				},
+				"memberOf": [
+					{
+						"id": "ReadResource"
+					},
+					{
+						"id": "ResearchDepartmentActions"
+					}
+				]
+			},
+			"UnsubscribeFromCourse": {
+				"appliesTo": {
+					"resourceTypes": [
+						"Course"
+					],
+					"principalTypes": [
+						"Student"
+					]
+				}
+			}
+		}
+	}
+}

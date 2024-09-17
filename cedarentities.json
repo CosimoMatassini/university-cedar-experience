@@ -1,0 +1,186 @@
+[
+	{
+		"uid": {
+			"type": "ProfessorTeam",
+			"id": "researcher"
+		},
+		"attrs": {},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "ProfessorTeam",
+			"id": "teacher"
+		},
+		"attrs": {},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "ProfessorTeam",
+			"id": "admin"
+		},
+		"attrs": {},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Student",
+			"id": "student1"
+		},
+		"attrs": {
+			"userInformation": {
+				"age": 25,
+				"id": 1
+			},
+			"faculty": "Computer Science",
+			"weightedAverage": {
+				"fn": "decimal",
+				"arg": "28.0"
+			}
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Student",
+			"id": "student3"
+		},
+		"attrs": {
+			"userInformation": {
+				"age": 23
+			},
+			"faculty": "Physics",
+			"weightedAverage": {
+				"fn": "decimal",
+				"arg": "0.0"
+			}
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Professor",
+			"id": "professor1"
+		},
+		"attrs": {
+			"userInformation": {
+				"age": 45,
+				"id": 3
+			}
+		},
+		"parents": [
+			{
+				"type": "ProfessorTeam",
+				"id": "researcher"
+			}
+		]
+	},
+	{
+		"uid": {
+			"type": "Professor",
+			"id": "professor2"
+		},
+		"attrs": {
+			"userInformation": {
+				"age": 36,
+				"id": 4
+			}
+		},
+		"parents": [
+			{
+				"type": "ProfessorTeam",
+				"id": "teacher"
+			}
+		]
+	},
+	{
+		"uid": {
+			"type": "Professor",
+			"id": "professor3"
+		},
+		"attrs": {
+			"userInformation": {
+				"age": 57,
+				"id": 5
+			}
+		},
+		"parents": [
+			{
+				"type": "ProfessorTeam",
+				"id": "admin"
+			}
+		]
+	},
+	{
+		"uid": {
+			"type": "Course",
+			"id": "course1"
+		},
+		"attrs": {
+			"faculty": "Computer Science",
+			"year": 2022,
+			"professors": [
+				{
+					"type": "Professor",
+					"id": "professor1"
+				},
+				{
+					"type": "Professor",
+					"id": "professor3"
+				}
+			]
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Course",
+			"id": "course2"
+		},
+		"attrs": {
+			"faculty": "Physics",
+			"year": 2024,
+			"professors": [
+				{
+					"type": "Professor",
+					"id": "professor2"
+				}
+			]
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Article",
+			"id": "article1"
+		},
+		"attrs": {
+			"title": "The impact of AI on the future of work",
+			"genre": "Artificial Intelligence"
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Article",
+			"id": "article2"
+		},
+		"attrs": {
+			"title": "The Impact of Social Media on Adolescent Mental Health",
+			"genre": "Humanities"
+		},
+		"parents": []
+	},
+	{
+		"uid": {
+			"type": "Article",
+			"id": "article3"
+		},
+		"attrs": {
+			"title": "Renewable Energy Sources: A Comparative Study of Solar and Wind Power",
+			"genre": "Engineering"
+		},
+		"parents": []
+	}
+]

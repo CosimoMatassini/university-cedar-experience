@@ -1,0 +1,6 @@
+{
+	"principal": "Professor::\"professor3\"",
+	"action": "Action::\"ReadArticle\"",
+	"resource": "Article::\"article3\"",
+	"context": {}
+}

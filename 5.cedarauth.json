@@ -1,0 +1,8 @@
+{
+	"principal": "Student::\"student1\"",
+	"action": "Action::\"ReadParticipants\"",
+	"resource": "Course::\"course1\"",
+	"context": {
+		"isPrincipalSubscribed": false
+	}
+}

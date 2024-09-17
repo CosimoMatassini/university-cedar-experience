@@ -1,0 +1,11 @@
+{
+	"principal": "Professor::\"professor1\"",
+	"action": "Action::\"PublishArticle\"",
+	"resource": "Article::\"article3\"",
+	"context": {
+		"sourceIp": {
+			"fn": "ip",
+			"arg": "1.2.3.4"
+		}
+	}
+}
